@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>贪吃蛇游戏</title>
+    <link rel="stylesheet" href="styles/style.css">
+</head>
+<body>
+    <!-- 开始页面 -->
+    <div id="start-screen" class="screen">
+        <div class="game-title">
+            <h1>贪吃蛇</h1>
+            <p>享受美味的像素之旅</p>
+        </div>
+        <button id="start-button" class="button">开始游戏</button>
+    </div>
+
+    <!-- 游戏页面 -->
+    <div id="game-screen" class="screen hidden">
+        <div class="game-stats">
+            <div class="score">分数: <span id="score">0</span></div>
+            <div class="control-buttons">
+                <button id="pause-button" class="button">
+                    <span class="pause-icon"></span>
+                </button>
+                <button id="fullscreen-button" class="button">
+                    <span class="fullscreen-icon"></span>
+                </button>
+            </div>
+        </div>
+        <canvas id="game-canvas"></canvas>
+    </div>
+</body>
+<script src="scripts/game.js"></script>
+</html> 
