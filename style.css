@@ -1,0 +1,270 @@
+/* 全局样式 */
+:root {
+    --primary-color: #007AFF;
+    --background-color: #F5F5F7;
+    --snake-color: #5856D6;
+    --food-color: #FF2D55;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+body {
+    background-color: var(--background-color);
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden; /* 防止滚动 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* 屏幕样式 */
+.screen {
+    width: 100%;
+    text-align: center;
+    padding: 20px;
+}
+
+.hidden {
+    display: none;
+}
+
+/* 开始页面样式 */
+.game-title {
+    margin-bottom: 40px;
+}
+
+.game-title h1 {
+    font-size: 48px;
+    color: var(--primary-color);
+    margin-bottom: 10px;
+}
+
+.game-title p {
+    font-size: 18px;
+    color: #666;
+}
+
+/* 按钮样式 */
+.button {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 8px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.button:hover {
+    transform: scale(1.05);
+}
+
+/* 游戏界面样式 */
+.game-screen {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    padding: 0;
+    margin: 0;
+}
+
+/* 修改游戏状态栏样式 */
+.game-stats {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 10;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 24px;
+    color: var(--primary-color);
+}
+
+/* 控制按钮容器 */
+.control-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+/* 按钮样式调整 */
+.game-stats .button {
+    padding: 10px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.game-stats .button:hover {
+    transform: scale(1.1);
+}
+
+/* 全屏图标样式 */
+.fullscreen-icon {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    position: relative;
+}
+
+.fullscreen-icon::before {
+    content: '';
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    border: 2px solid var(--primary-color);
+    border-radius: 2px;
+}
+
+/* 暂停图标颜色修改 */
+.pause-icon {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    position: relative;
+}
+
+.pause-icon::before,
+.pause-icon::after {
+    content: '';
+    position: absolute;
+    width: 6px;
+    height: 20px;
+    background-color: var(--primary-color);
+    border-radius: 3px;
+}
+
+.pause-icon::before {
+    left: 0;
+}
+
+.pause-icon::after {
+    right: 0;
+}
+
+/* 方向控制按钮容器 */
+.direction-controls {
+    position: fixed;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    z-index: 100;
+}
+
+.horizontal-buttons {
+    display: flex;
+    gap: 20px;
+}
+
+/* 方向按钮样式 */
+.direction-button {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: none;
+    background-color: rgba(0, 122, 255, 0.2);
+    color: var(--primary-color);
+    font-size: 24px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.2s;
+}
+
+.direction-button:hover {
+    background-color: rgba(0, 122, 255, 0.3);
+    transform: scale(1.1);
+}
+
+.direction-button:active {
+    background-color: rgba(0, 122, 255, 0.4);
+    transform: scale(0.95);
+}
+
+/* 在小屏幕设备上显示方向控制按钮 */
+@media (hover: none) and (pointer: coarse) {
+    .direction-controls {
+        bottom: 60px; /* 在触摸设备上增加底部间距 */
+    }
+}
+
+/* 在桌面设备上隐藏方向控制按钮 */
+@media (hover: hover) and (pointer: fine) {
+    .direction-controls {
+        display: none;
+    }
+}
+
+/* 添加开始页面的卡通蛇样式 */
+.cartoon-snake {
+    width: 200px;
+    height: 100px;
+    margin: 0 auto 30px;
+    position: relative;
+}
+
+.snake-body {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    background-color: var(--snake-color);
+    border-radius: 20px;
+}
+
+.snake-body.head {
+    left: 120px;
+    top: 30px;
+}
+
+.snake-body.body-1 {
+    left: 85px;
+    top: 30px;
+}
+
+.snake-body.body-2 {
+    left: 50px;
+    top: 30px;
+}
+
+.snake-body.tail {
+    left: 15px;
+    top: 30px;
+}
+
+.snake-eye {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background-color: white;
+    border-radius: 50%;
+    top: 12px;
+}
+
+.snake-eye.left {
+    right: 10px;
+}
+
+.snake-eye.right {
+    right: 25px;
+}
+
+/* 始终显示方向控制按钮 */
+.direction-controls {
+    display: flex !important;
+} 
